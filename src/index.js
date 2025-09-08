@@ -18,7 +18,7 @@ app.use(express.json());
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 app.use('/api/auth', authRoutes);
-app.use('/api/items', itemRoutes);
+app.use('https://cartify-backend-production.up.railway.app/api/items', itemRoutes);
 app.use('/api/cart', cartRoutes);
 
 const port = process.env.PORT || 4000;
