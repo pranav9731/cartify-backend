@@ -19,7 +19,10 @@ app.use('/api/items', itemRoutes);
 app.use('/api/cart', cartRoutes);
 
 const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`API listening on http://localhost:${port}`));
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`API listening on port ${port}`);
+});
 
 
 
