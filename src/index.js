@@ -12,9 +12,11 @@ console.log("Backend starting...");
 const app = express();
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: "https://cartify-m.netlify.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
-}));
+})
+);
 app.use(express.json());
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
