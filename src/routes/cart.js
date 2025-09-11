@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import { db } from '../db.js';
+import { global.db } from '../global.db.js';
 import { requireAuth } from '../middleware/auth.js';
 
 const router = Router();
 
 function getOrCreateCart(userId) {
-  let cart = db.data.carts.find(c => c.userId === userId);
+  let cart = global.db.data.carts.find(c => c.userId === userId);
   if (!cart) {
     cart = { userId, items: [], updatedAt: new Date().toISOString() };
-    db.data.carts.push(cart);
-    db.write();
+    global.db.data.carts.push(cart);
+    global.db.write();
   }
   return cart;
 }
@@ -18,7 +18,7 @@ router.get('/', requireAuth, (req, res) => {
   const cart = getOrCreateCart(req.user.id);
   const detailedItems = cart.items
     .map(ci => {
-      const product = db.data.items.find(i => i.id === ci.itemId);
+      const product = global.db.data.items.find(i => i.id === ci.itemId);
       return product ? { ...ci, product } : null;
     })
     .filter(Boolean);
@@ -29,7 +29,7 @@ router.get('/', requireAuth, (req, res) => {
 router.post('/add', requireAuth, (req, res) => {
   const { itemId, quantity = 1 } = req.body || {};
   if (!itemId) return res.status(400).json({ message: 'Missing itemId' });
-  const item = db.data.items.find(i => i.id === itemId);
+  const item = global.db.data.items.find(i => i.id === itemId);
   if (!item) return res.status(400).json({ message: 'Invalid itemId' });
 
   const cart = getOrCreateCart(req.user.id);
@@ -38,7 +38,7 @@ router.post('/add', requireAuth, (req, res) => {
   else cart.items.push({ itemId, quantity: Number(quantity) || 1 });
 
   cart.updatedAt = new Date().toISOString();
-  db.write();
+  global.db.write();
   res.json({ ok: true });
 });
 
@@ -52,7 +52,7 @@ router.post('/update', requireAuth, (req, res) => {
   else cart.items[idx].quantity = quantity;
 
   cart.updatedAt = new Date().toISOString();
-  db.write();
+  global.db.write();
   res.json({ ok: true });
 });
 
@@ -62,7 +62,7 @@ router.post('/remove', requireAuth, (req, res) => {
   const cart = getOrCreateCart(req.user.id);
   cart.items = cart.items.filter(i => i.itemId !== itemId);
   cart.updatedAt = new Date().toISOString();
-  db.write();
+  global.db.write();
   res.json({ ok: true });
 });
 
