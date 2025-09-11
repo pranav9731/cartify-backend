@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { global.db } from '../global.db.js';
 import { requireAuth } from '../middleware/auth.js';
 
 const router = Router();
