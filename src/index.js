@@ -13,7 +13,7 @@ const allowedOrigins = [
   "http://localhost:5173"           // for local dev
 ];
 app.use(cors({
-  origin: "https://cartify-m.netlify.app" , "http://localhost:5173",
+  origin: ["https://cartify-m.netlify.app", "http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
