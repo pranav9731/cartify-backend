@@ -7,14 +7,27 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dataDir = path.join(__dirname, '..', 'data');
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-const dbFile = path.join(dataDir, 'db.json');
 
-const defaultData = { users: [], items: [], carts: [] };
-const adapter = new JSONFile(dbFile);
-const db = new Low(adapter, defaultData);
-await db.read();
-if (!db.data) db.data = defaultData;
-await db.write();
+let db;
 
-export { db };
+async function initDatabase() {
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+  }
+  
+  const dbFile = path.join(dataDir, 'db.json');
+  const defaultData = { users: [], items: [], carts: [] };
+  const adapter = new JSONFile(dbFile);
+  
+  db = new Low(adapter, defaultData);
+  await db.read();
+  
+  if (!db.data) {
+    db.data = defaultData;
+  }
+  
+  await db.write();
+  return db;
+}
+
+export { db, initDatabase };
