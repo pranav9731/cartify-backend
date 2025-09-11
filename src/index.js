@@ -7,12 +7,10 @@ import itemRoutes from './routes/items.js';
 import cartRoutes from './routes/cart.js';
 import './routes/seed.js';
 
-console.log("Backend starting...");
-
 const app = express();
 
 app.use(cors({
-  origin: "*",
+  origin: "https://cartify-m.netlify.app",
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
