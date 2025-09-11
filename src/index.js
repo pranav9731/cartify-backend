@@ -124,6 +124,9 @@ async function startServer() {
     
     // Seed if empty
     await seedIfEmpty();
+
+    //Declaration
+    global.db = db;
     
     // CORS configuration
     app.use(cors({
