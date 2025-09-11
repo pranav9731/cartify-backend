@@ -6,7 +6,7 @@ export function requireAuth(req, res, next) {
     const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
     if (!token) return res.status(401).json({ message: 'Missing token' });
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    const user = db.data.users.find(u => u.id === payload.userId);
+    const user = global.db.data.users.find(u => u.id === payload.userId);  // Use global.db
     if (!user) return res.status(401).json({ message: 'Invalid token' });
     req.user = { id: user.id, email: user.email, name: user.name };
     next();
