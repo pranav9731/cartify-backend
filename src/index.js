@@ -8,7 +8,10 @@ import cartRoutes from './routes/cart.js';
 import './routes/seed.js';
 
 const app = express();
-
+const allowedOrigins = [
+  "https://cartify-m.netlify.app", // your Netlify frontend
+  "http://localhost:5173"           // for local dev
+];
 app.use(cors({
   origin: "https://cartify-m.netlify.app",
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
