@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import cors from 'cors';
 import { db } from '../db.js';
 
 export function requireAuth(req, res, next) {
