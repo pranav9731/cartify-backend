@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import { db } from '../db.js';
 
 export function requireAuth(req, res, next) {
   try {
