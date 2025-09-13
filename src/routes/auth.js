@@ -4,6 +4,9 @@ import jwt from 'jsonwebtoken';
 import { nanoid } from 'nanoid';
 import { db } from '../db.js';
 import { requireAuth } from '../middleware/auth.js';
+import dotenv from 'dotenv';  
+
+dotenv.config(); 
 
 const router = Router();
 
