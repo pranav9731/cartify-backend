@@ -10,7 +10,7 @@ import './routes/seed.js';
 const app = express();
 
 app.use(cors({
-  origin: [process.env.CLIENT_URL, 'http://localhost:5173'],
+  origin: [process.env.CLIENT_URL, 'http://localhost:5173', 'https://cartify-m.netlify.app', 'http://cartify-m.netlify.app'],
   credentials: true
 }));
 
