@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 const records = [
   { title: 'Noise-Cancelling Headphones', description: 'Over-ear Bluetooth ANC with 30h battery life', price: 149.99, category: 'Electronics', imageUrl: 'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=1200' },
-  { title: 'Smart Watch Series X', description: 'AMOLED, GPS, heart-rate, 5ATM', price: 199.00, category: 'Electronics', imageUrl: 'https://images.unsplash.com/photo-1518441902113-c1d3b2d3f6b4?q=80&w=1200' },
+  { title: 'Smart Watch Series X', description: 'AMOLED, GPS, heart-rate, 5ATM', price: 199.00, category: 'Electronics', imageUrl: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=1200' },
   { title: 'Espresso Machine Pro', description: '15-bar pump, steam wand, fast heat-up', price: 249.99, category: 'Home', imageUrl: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1200' },
   { title: 'Lightweight Running Shoes', description: 'Breathable mesh upper, responsive cushioning', price: 89.95, category: 'Fashion', imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200' },
   { title: 'Eco Yoga Mat', description: 'Non-slip, eco-friendly TPE, 6mm thick', price: 29.99, category: 'Sports', imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1200' },
